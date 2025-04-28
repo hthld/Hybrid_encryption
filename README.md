@@ -1,4 +1,4 @@
-# Hybrid_encryption
+# Hybrid_encryption_C++
 
   Example of C++ code for hybrid encryption.
 This code can be used to encrypt a text document. It uses hybrid encryption technology RSA (for key encryption) + AES (for file encryption)
