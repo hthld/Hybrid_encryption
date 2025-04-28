@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-// функция создания файла
+// File creation function
 bool create_file(const string& filename)
 {
 	ofstream file(filename);
@@ -16,7 +16,7 @@ bool create_file(const string& filename)
 
 
 
-// функция проверки существования файла
+// File existence check function
 bool file_exist(const string& filename)
 {
 	ifstream file(filename);
@@ -25,7 +25,7 @@ bool file_exist(const string& filename)
 
 
 
-// функция создания простого пароля
+// Simple password function
 char* make_pass() {
     srand(time(nullptr));
     char* pass = new char[65];
@@ -42,7 +42,7 @@ char* make_pass() {
 
 
 
-// функция шифрования файла
+// File encryption function
 void  encrypt(const string& filename, const string& openSSL_path)
 {
     const char* password = make_pass();
@@ -72,7 +72,7 @@ void  encrypt(const string& filename, const string& openSSL_path)
 
 
 
-// функция дешифровки файла
+// File decryption function
 void decrypt(const string& filename, const string& openSSL_path)
 {
     string command = openSSL_path + "\\openssl.exe pkeyutl -decrypt -inkey private.key -in key_" + filename + ".enc -out key_" + filename;
@@ -109,7 +109,7 @@ void decrypt(const string& filename, const string& openSSL_path)
 
 
 
-// функция создания ключей RSA
+// RSA key creation function
 void create_rsa_keys()
 {
     string privateKey = "private.key";
@@ -129,7 +129,6 @@ void create_rsa_keys()
 
 int main()
 {
-    system("chcp 1251");
     string openSSL_path = "C:\\Libs\\openssl-3.2.1\\builds\\v120-x64-release-shared\\bin";
 
     create_rsa_keys();
@@ -145,17 +144,13 @@ int main()
  
     string contextMenu = 
         "\n-----------------\n"
-        "1. Шифрование\n"
-        "2. Дешифрование\n"
-        "3. Добавить Диму\n"
-        "4. Вариант 4\n"
-        "5. Вариант 5\n"
-        "6. Выход"
+        "1. Encryption\n"
+        "2. Dencryption\n"
         "\n-----------------\n"
-        "Выбери вариант: ";
+        "Choose option: ";
 
     int choise = 0;
-    while (choise != 6) {
+    while (choise != 2) {
         cout << contextMenu;
         cin >> choise;
         switch (choise) {
@@ -166,17 +161,6 @@ int main()
         case 2:
             decrypt(filename, openSSL_path);
             cout << "\nDecrypted!" << endl;
-            break;
-        case 3:
-     
-            break;
-        case 4:
-            
-            break;
-        case 5:
-            
-            break;
-        case 6:
             break;
         default:
             cout << "\nThere is no such option.";
