@@ -145,12 +145,13 @@ int main()
     string contextMenu = 
         "\n-----------------\n"
         "1. Encryption\n"
-        "2. Dencryption\n"
+        "2. Decryption\n"
+        "3. End\n"
         "\n-----------------\n"
         "Choose option: ";
 
     int choise = 0;
-    while (choise != 2) {
+    while (choise != 3) {
         cout << contextMenu;
         cin >> choise;
         switch (choise) {
@@ -161,6 +162,8 @@ int main()
         case 2:
             decrypt(filename, openSSL_path);
             cout << "\nDecrypted!" << endl;
+            break;
+        case 3:
             break;
         default:
             cout << "\nThere is no such option.";
